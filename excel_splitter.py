@@ -113,7 +113,12 @@ def process_excel_file():
         print(f"Error loading Excel file: {e}")
         return False
     
-    # Create output folder
+    # Create main output folder if it doesn't exist
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder, exist_ok=True)
+        print(f"Created main output folder: {output_folder}")
+    
+    # Create output folder for Excel file
     print(f"\nCreating output folder...")
     output_path = create_output_folder(output_folder, excel_file)
     
